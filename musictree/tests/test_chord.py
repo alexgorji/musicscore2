@@ -4,7 +4,7 @@ from unittest.mock import Mock, patch
 
 from musictree.accidental import Accidental
 from musictree.chord import Chord
-from musictree.exceptions import ChordHasNoParentError, ChordQuarterDurationAlreadySetError, NoteTypeError
+from musictree.exceptions import ChordHasNoParentError, ChordQuarterDurationAlreadySetError, NoteTypeError, ChordCannotAddSelfAsChild
 from musictree.midi import Midi
 from musictree.tests.util import check_notes
 
@@ -383,3 +383,17 @@ class TestTreeChord(TestCase):
         assert [n.is_tied for n in ch1.notes] == [True, True]
         assert [n.is_tied for n in ch2.notes] == [False, False]
         assert [n.is_tied_to_previous for n in ch2.notes] == [True, True]
+
+    def test_chord_self_as_child(self):
+        ch1 = Chord(midis=[60, 61], quarter_duration=1)
+        ch2 = Chord(midis=[60, 61], quarter_duration=0.5)
+        ch1.add_child(ch2)
+        with self.assertRaises(ChordCannotAddSelfAsChild):
+            ch1.add_child(ch1)
+
+    def test_chord_copy(self):
+        self.fail('Incomplete')
+        # ch1 = Chord(midis=[60, 61], quarter_duration=1)
+
+    def test_chord_split_copy(self):
+        self.fail('Incomplete')

@@ -79,6 +79,7 @@ class Measure(MusicTree, XMLWrapper):
         self._update_voice_beats()
 
     def add_child(self, child):
+        self._check_child_to_be_added(child)
         if child.value is not None and child.value != len(self.get_children()) + 1:
             raise ValueError(f'Staff number must be None or {len(self.get_children()) + 1}')
         if child.value is None:
@@ -89,7 +90,10 @@ class Measure(MusicTree, XMLWrapper):
                 child.value = len(self.get_children()) + 1
             else:
                 child.value = len(self.get_children()) + 1
-        return super().add_child(child)
+
+        child._parent = self
+        self._children.append(child)
+        return child
         # Must be called from within voice, if voice is filled.
 
     def add_chord(self, chord, staff=1, voice=1):

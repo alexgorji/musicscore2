@@ -23,21 +23,16 @@ class TestMusicTree(IdTestCase):
         st = Staff()
         v = Voice()
         b = Beat()
-        c = Chord(60, 1)
-        n = Note(parent_chord=c)
-        mi = Midi(60)
-        acc = Accidental()
+        c1 = Chord(60, 0.5)
+        c2 = Chord(60, 0.25)
         assert p == s.add_child(p)
         assert m == p.add_child(m)
         assert st == m.add_child(st)
         assert v == st.add_child(v)
         assert b == v.add_child(b)
-        assert c == b.add_child(c)
-        assert n == c.add_child(n)
-        assert mi == n.add_child(mi)
-        assert acc == mi.add_child(acc)
-
-        objects = [s, m, st, v, b, c, n, mi]
+        assert c1 == b.add_child(c1)
+        assert c2 == c1.add_child(c2)
+        objects = [s, m, st, v, b, c1, c2]
         for parent in objects:
             with self.assertRaises(TypeError):
                 parent.add_child(s)
@@ -49,7 +44,3 @@ class TestMusicTree(IdTestCase):
             if parent != p:
                 with self.assertRaises(TypeError):
                     parent.add_child(m)
-
-        for child in objects:
-            with self.assertRaises(NotImplementedError):
-                acc.add_child(child)

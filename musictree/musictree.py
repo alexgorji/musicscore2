@@ -23,7 +23,7 @@ class MusicTree(Tree):
             raise TypeError(f'MusicTree child must be of type MusicTree not {child.__class__}')
 
         parent_child = {'Score': 'Part', 'Part': 'Measure', 'Measure': 'Staff', 'Staff': 'Voice', 'Voice': 'Beat', 'Beat': 'Chord',
-                        'Chord': 'Note', 'Note': 'Midi', 'Midi': 'Accidental'}
+                        'Chord': 'Chord'}
 
         try:
             if not isinstance_as_string(child.__class__, parent_child[self.__class__.__name__]):

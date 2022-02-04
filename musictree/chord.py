@@ -3,7 +3,7 @@ from typing import Union, List, Optional
 from fractions import Fraction
 
 from musictree.exceptions import NoteTypeError, ChordAlreadySplitError, ChordCannotSplitError, ChordHasNoParentError, \
-    ChordHasNoQuarterDurationError, ChordQuarterDurationAlreadySetError
+    ChordHasNoQuarterDurationError, ChordQuarterDurationAlreadySetError, ChordCannotAddSelfAsChild
 from musictree.midi import Midi
 from musictree.musictree import MusicTree
 from musictree.note import Note
@@ -31,6 +31,11 @@ class Chord(MusicTree, QuarterDurationMixin):
         super().__init__(quarter_duration=quarter_duration)
         self._set_midis(midis)
         self.split = False
+
+    def _check_child_to_be_added(self, child):
+        if child == self:
+            raise ChordCannotAddSelfAsChild
+        super()._check_child_to_be_added(child)
 
     def _update_notes_quarter_duration(self):
         if self.notes is not None:
@@ -144,7 +149,9 @@ class Chord(MusicTree, QuarterDurationMixin):
         return self.up.up.value
 
     def get_parent_measure(self):
-        return self.up.up.up.up
+        if isinstance(self.up, Chord):
+            return self.up.up.up.up
+        return self.up.up.up
 
     def split_beatwise(self, beats):
         voice_set = {beat.up for beat in beats}
@@ -161,31 +168,41 @@ class Chord(MusicTree, QuarterDurationMixin):
         if beats[-1] != voice.get_children()[-1]:
             raise ChordAlreadySplitError('Last beat must be the last beat in voice.')
 
-        # if self.get_children():
-        #     raise ChordAlreadySplitError("Remove chord's children if you wish to split it again.")
+        if self.get_children():
+            raise ChordAlreadySplitError("Remove chord's children if you wish to split it again.")
+
         quarter_durations = self.quarter_duration.get_beatwise_sections(
             offset=beats[0].filled_quarter_duration, beats=beats)
-        self.quarter_duration = quarter_durations[0][0]
-        self.split = True
-        voice.get_current_beat().add_child(self)
-        current_chord = self
-        output = [self]
-        for qd in quarter_durations[0][1:]:
-            copied = Chord(midis=self.midis, quarter_duration=qd)
-            copied.split = True
-            voice.get_current_beat().add_child(copied)
-            current_chord.add_tie('start')
-            copied.add_tie('stop')
-            current_chord = copied
-            output.append(current_chord)
-        if quarter_durations[1]:
-            left_over_chord = Chord(midis=self.midis, quarter_duration=quarter_durations[1])
-            current_chord.add_tie('start')
-            left_over_chord.add_tie('stop')
+        left_over_chord = None
+        if quarter_durations[1] is None and len(quarter_durations[0]) == 1:
+            self.split = True
+            voice.fill_beats([self])
+            # voice.get_current_beat().add_child(self)
+            return [self]
         else:
-            left_over_chord = None
-        self.up.left_over_chord = left_over_chord
-        self.up.up.left_over_chord = left_over_chord
+            first_quarter_duration = quarter_durations[0][0]
+            first_copied_chord = Chord(midis=self.midis, quarter_duration=first_quarter_duration)
+            current_chord = first_copied_chord
+            current_chord.split = True
+            # voice.get_current_beat().add_child(current_chord)
+            output = [first_copied_chord]
+            for qd in quarter_durations[0][1:]:
+                copied = Chord(midis=self.midis, quarter_duration=qd)
+                copied.split = True
+                # voice.get_current_beat().add_child(copied)
+                current_chord.add_tie('start')
+                copied.add_tie('stop')
+                current_chord = copied
+                output.append(current_chord)
+            if quarter_durations[1]:
+                left_over_chord = Chord(midis=self.midis, quarter_duration=quarter_durations[1])
+                current_chord.add_tie('start')
+                left_over_chord.add_tie('stop')
+        for ch in output:
+            self.add_child(ch)
+        voice.left_over_chord = left_over_chord
+        if left_over_chord:
+            self.add_child(left_over_chord)
         return output
 
     def to_rest(self):

@@ -49,7 +49,6 @@ class Beat(MusicTree, QuarterDurationMixin):
             raise ChordHasNoMidisError('Chord with no midis cannot be added to Beat.')
         if self.is_filled:
             raise BeatIsFullError()
-        child.offset = self.filled_quarter_duration
         diff = child.quarter_duration - (self.quarter_duration - self.filled_quarter_duration)
         if diff <= 0:
             self._filled_quarter_duration += child.quarter_duration
@@ -67,7 +66,9 @@ class Beat(MusicTree, QuarterDurationMixin):
                         break
             else:
                 beats = self.up.get_children()[self.up.get_children().index(self):]
-                return child.split_beatwise(beats)
+                child.split_beatwise(beats)
+                # return child
+        child.offset = self.filled_quarter_duration
         child._parent = self
         self._children.append(child)
         return child

@@ -62,9 +62,16 @@ class TestVoice(TestCase):
         v = Voice()
         with self.assertRaises(VoiceHasNoBeatsError):
             v.add_chord(Chord())
-        v.update_beats(1, 1, 1, 1)
+        beats = v.update_beats(1, 1, 1, 1)
+        assert v.get_current_beat() == beats[0]
         v.add_chord(Chord(quarter_duration=1.5, midis=60))
+        assert beats[0].is_filled
+        assert beats[1].filled_quarter_duration == 0.5
+        assert v.get_current_beat() == beats[1]
         v.add_chord(Chord(quarter_duration=2, midis=60))
+        assert beats[0].is_filled
+        assert beats[1].filled_quarter_duration == 1
+        assert beats[1].is_filled
         v.add_chord(Chord(quarter_duration=0.5, midis=60))
         assert v.left_over_chord is None
         assert [ch.quarter_duration for ch in v.get_chords()] == [1.5, 0.5, 1.5, 0.5]

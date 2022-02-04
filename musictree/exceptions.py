@@ -42,6 +42,10 @@ class ChordHasNoMidisError(ChordException):
     pass
 
 
+class ChordCannotAddSelfAsChild(ChordException, ValueError):
+    pass
+
+
 class BeatException(MusicTreeException):
     pass
 
