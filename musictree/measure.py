@@ -1,4 +1,4 @@
-from musicxml.xmlelement.xmlelement import XMLMeasure, XMLAttributes, XMLDivisions, XMLKey, XMLClef
+from musicxml.xmlelement.xmlelement import XMLMeasure, XMLAttributes, XMLDivisions, XMLKey, XMLClef, XMLBackup
 
 from musictree.musictree import MusicTree
 from musictree.staff import Staff
@@ -9,7 +9,7 @@ from musictree.xmlwrapper import XMLWrapper
 
 
 class Measure(MusicTree, XMLWrapper):
-    _ATTRIBUTES = {'number', 'time'}
+    _ATTRIBUTES = {'number', 'time', 'quarter_duration'}
 
     def __init__(self, number, time=None, *args, **kwargs):
         super().__init__()
@@ -22,12 +22,29 @@ class Measure(MusicTree, XMLWrapper):
     def _set_attributes(self):
         self.xml_object.xml_attributes = XMLAttributes()
         self.xml_object.xml_attributes.xml_divisions = 1
+
+    def _update_attributes(self):
         self.xml_object.xml_attributes.xml_key = XMLKey()
         self.xml_object.xml_attributes.xml_key.xml_fifths = 0
         self.xml_object.xml_attributes.xml_time = self.time.xml_object
-        self.xml_object.xml_attributes.xml_clef = XMLClef()
-        self.xml_object.xml_attributes.xml_clef.xml_sign = 'G'
-        self.xml_object.xml_attributes.xml_clef.xml_line = 2
+        if len(self.get_children()) > 1:
+            self.xml_object.xml_attributes.xml_staves = len(self.get_children())
+
+        if len(self.get_children()) == 1:
+            self.xml_object.xml_attributes.xml_clef = XMLClef()
+            self.xml_object.xml_attributes.xml_clef.xml_sign = 'G'
+            self.xml_object.xml_attributes.xml_clef.xml_line = 2
+        elif len(self.get_children()) == 2:
+            for n in range(1, 3):
+                cl = self.xml_object.xml_attributes.add_child(XMLClef(number=n))
+                if n == 1:
+                    cl.xml_sign = 'G'
+                    cl.xml_line = 2
+                else:
+                    cl.xml_sign = 'F'
+                    cl.xml_line = 4
+        else:
+            raise NotImplementedError()
 
     def _update_voice_beats(self):
         for staff in self.get_children():
@@ -72,6 +89,40 @@ class Measure(MusicTree, XMLWrapper):
                     elif midi.accidental.sign != 'natural' and step not in steps_with_accidentals:
                         steps_with_accidentals.add(step)
 
+    def _update_xml_notes(self):
+        self._update_attributes()
+
+        def reset_notes():
+            current_xml_notes = self.xml_object.find_children('XMLNote')
+            current_xml_backups = self.xml_object.find_children('XMLBackup')
+            for note in current_xml_notes:
+                note.up.remove(note)
+            for backup in current_xml_backups:
+                backup.up.remove(backup)
+
+        def add_backup():
+            b = XMLBackup()
+            d = self.quarter_duration * self.get_divisions()
+            if int(d) != d:
+                raise ValueError
+            b.xml_duration = int(d)
+            self.xml_object.add_child(b)
+
+        reset_notes()
+        self.update_divisions()
+        for beat in [b for staff in self.get_children() for voice in staff.get_children() for b in voice.get_children()]:
+            beat._update_xml_notes()
+        self._update_accidentals()
+        for staff in self.get_children():
+            if staff != self.get_children()[0]:
+                add_backup()
+            for index, voice in enumerate(staff.get_children()):
+                chords = voice.get_chords()
+                if index != 0:
+                    add_backup()
+                for note in [note for chord in chords for note in chord.notes]:
+                    self.xml_object.add_child(note.xml_object)
+
     @property
     def number(self):
         return int(self.xml_object.number)
@@ -93,6 +144,10 @@ class Measure(MusicTree, XMLWrapper):
         self._time = val
         self._time.parent_measure = self
         self._update_voice_beats()
+
+    @property
+    def quarter_duration(self):
+        return sum(self.time.get_beats_quarter_durations())
 
     def add_child(self, child):
         if child.value is not None and child.value != len(self.get_children()) + 1:
@@ -153,18 +208,6 @@ class Measure(MusicTree, XMLWrapper):
             for child in staff_object.get_children():
                 if child.value == voice_number:
                     return child
-
-    def _update_xml_notes(self):
-        current_xml_notes = self.xml_object.find_children('XMLNote')
-        for note in current_xml_notes:
-            note.up.remove(note)
-        self.update_divisions()
-        for staff in self.get_children():
-            staff._update_xml_notes()
-        self._update_accidentals()
-        current_notes = [note for chord in self.get_chords() for note in chord.notes]
-        for note in current_notes:
-            self.xml_object.add_child(note.xml_object)
 
     def update_divisions(self):
         chord_divisions = {ch.quarter_duration.denominator for ch in self.get_chords()}

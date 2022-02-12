@@ -582,3 +582,49 @@ class TestUpdateAccidentals(IdTestCase):
         last_chord = p.get_children()[-1].get_children()[-1].get_chords()[0]
         assert last_chord.midis[0].accidental.sign == 'natural'
         assert last_chord.midis[0].accidental.show
+
+    def test_quarter_duration(self):
+        m = Measure(1)
+        assert m.quarter_duration == 4
+        m.time.signatures = (3, 4)
+        assert m.quarter_duration == 3
+        m.time.signatures = (2, 4, 1, 8)
+        assert m.quarter_duration == 2.5
+
+    def test_xml_notes_with_different_voices(self):
+        m = Measure(1)
+        m.add_chord(Chord(60, 4))
+        m.add_chord(Chord(60, 4), voice_number=2)
+        m._update_xml_notes()
+        ch1, ch2 = m.get_chords()
+        assert ch1.notes[0].xml_voice.value == '1'
+        assert ch2.notes[0].xml_voice.value == '2'
+        b = m.xml_object.find_child('XMLBackup')
+        assert b is not None
+
+    def test_xml_notes_with_different_staves(self):
+        m = Measure(1)
+        m.add_chord(Chord(72, 4), staff_number=1, voice_number=1)
+        m.add_chord(Chord(60, 4), staff_number=1, voice_number=2)
+        m.add_chord(Chord(48, 4), staff_number=2, voice_number=1)
+        m.add_chord(Chord(36, 4), staff_number=2, voice_number=2)
+        m._update_xml_notes()
+        ch1, ch2, ch3, ch4 = m.get_chords()
+        assert ch1.notes[0].xml_staff.value == 1
+        assert ch2.notes[0].xml_staff.value == 1
+        assert ch3.notes[0].xml_staff.value == 2
+        assert ch4.notes[0].xml_staff.value == 2
+        assert ch1.notes[0].xml_voice.value == '1'
+        assert ch2.notes[0].xml_voice.value == '2'
+        assert ch3.notes[0].xml_voice.value == '1'
+        assert ch4.notes[0].xml_voice.value == '2'
+        backups = m.xml_object.find_children('XMLBackup')
+        assert len(backups) == 3
+        assert m.xml_attributes.xml_staves.value == 2
+        cl1, cl2 = m.xml_attributes.find_children('XMLClef')
+        assert cl1.number == 1
+        assert cl2.number == 2
+        assert cl1.xml_sign.value == 'G'
+        assert cl1.xml_line.value == 2
+        assert cl2.xml_sign.value == 'F'
+        assert cl2.xml_line.value == 4

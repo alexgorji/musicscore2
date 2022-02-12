@@ -16,10 +16,6 @@ class Voice(MusicTree, XMLWrapper):
         self._current_beat = None
         self.left_over_chord = None
 
-    def _update_xml_notes(self):
-        for beat in self.get_children():
-            beat._update_xml_notes()
-
     @property
     def is_filled(self):
         if self.get_children():

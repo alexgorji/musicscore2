@@ -1,6 +1,7 @@
 from unittest import TestCase
 from unittest.mock import patch
 
+from musictree.beat import Beat
 from musictree.chord import Chord
 from musictree.measure import Measure
 from musictree.part import Part
@@ -64,10 +65,3 @@ class TestStaff(TestCase):
         m1.add_chord(Chord(midis=[61, 62, 63], quarter_duration=2))
         m1.add_chord(Chord(midis=[63, 64, 66], quarter_duration=2))
         assert m1.get_staff(1).get_last_steps_with_accidentals() == {'E', 'F'}
-
-    @patch('musictree.measure.Measure')
-    def test_update_xml_notes_with_different_voices(self, mock_measure):
-        st = Staff()
-        st._parent = mock_measure
-        st.add_voice()
-        st.add_voice()

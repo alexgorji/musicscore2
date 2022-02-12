@@ -19,13 +19,14 @@ class TestHelloPianoStaves(IdTestCase):
         """
         p = s.add_child(Part('P1', name='Music'))
         """
-        He adds some chords for two staves with each two voices
+        He adds some chords for two voices
         """
-        p.add_chord(Chord(60, 4), staff=1, voice=1)
-        p.add_chord(Chord(61, 4), staff=1, voice=2)
-        p.add_chord(Chord(48, 4), staff=2, voice=1)
-        p.add_chord(Chord(49, 4), staff=2, voice=2)
-
+        for qd in 4 * [1]:
+            p.add_chord(Chord(60, qd), voice_number=3)
+        for qd in 8 * [1 / 2]:
+            p.add_chord(Chord(72, qd), voice_number=2)
+        for qd in 12 * [1 / 3]:
+            p.add_chord(Chord(84, qd), voice_number=1)
         s.update_xml_notes()
         """
         ... and exports the xml

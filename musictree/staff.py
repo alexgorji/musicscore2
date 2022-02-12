@@ -11,10 +11,6 @@ class Staff(MusicTree, XMLWrapper):
         super().__init__()
         self._xml_object = XMLStaff(*args, **kwargs)
 
-    def _update_xml_notes(self):
-        for voice in self.get_children():
-            voice._update_xml_notes()
-
     def add_child(self, child):
         if not self.up:
             raise StaffHasNoParentError('A child Voice can only be added to a Staff if staff has a Measure parent.')
