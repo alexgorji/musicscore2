@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>musicxml.xsd.xsdattribute &mdash; musicscore2 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="musicxml.xsd.xsdcomplextype" href="musicxml.xsd.xsdcomplextype.html" />
+    <link rel="prev" title="musicxml.xsd" href="musicxml.xsd.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> musicscore2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="musicxml.html">musicxml</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="musicxml.xmlelement.html">musicxml.xmlelement</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="musicxml.xsd.html">musicxml.xsd</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">musicxml.xsd.xsdattribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="musicxml.xsd.xsdcomplextype.html">musicxml.xsd.xsdcomplextype</a></li>
+<li class="toctree-l3"><a class="reference internal" href="musicxml.xsd.xsdelement.html">musicxml.xsd.xsdelement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="musicxml.xsd.xsdindicator.html">musicxml.xsd.xsdindicator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="musicxml.xsd.xsdsimpletype.html">musicxml.xsd.xsdsimpletype</a></li>
+<li class="toctree-l3"><a class="reference internal" href="musicxml.xsd.xsdtree.html">musicxml.xsd.xsdtree</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="musicxml.exceptions.html">musicxml.exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="musicxml.util.html">musicxml.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tree/tree.html">tree</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">musicscore2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="musicxml.html">musicxml</a> &raquo;</li>
+          <li><a href="musicxml.xsd.html">musicxml.xsd</a> &raquo;</li>
+      <li>musicxml.xsd.xsdattribute</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/musicxml/musicxml.xsd.xsdattribute.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="module-musicxml.xsd.xsdattribute">
+<span id="musicxml-xsd-xsdattribute"></span><h1>musicxml.xsd.xsdattribute<a class="headerlink" href="#module-musicxml.xsd.xsdattribute" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttribute">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xsd_tree</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttribute" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttribute.is_required">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_required</span></span><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttribute.is_required" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttribute.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttribute.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttribute.ref">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttribute.ref" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttribute.type_">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">type_</span></span><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttribute.type_" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttribute.xsd_tree">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">xsd_tree</span></span><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttribute.xsd_tree" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroup">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroup</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTreeElement" title="musicxml.xsd.xsdtree.XSDTreeElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdtree.XSDTreeElement</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroup.get_xsd_attributes">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_xsd_attributes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroup.get_xsd_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup.get_xsd_attributes" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupBendSound">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupBendSound</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupBendSound"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupBendSound" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The bend-sound type is used for bend and slide elements, and is similar to the trill-sound attribute group. Here the beats element refers to the number of discrete elements (like MIDI pitch bends) used to represent a continuous bend or slide. The first-beat indicates the percentage of the duration for starting a bend; the last-beat the percentage for ending it. The default choices are:</p>
+<blockquote>
+<div><p>accelerate = “no”
+beats = “4”
+first-beat = “25”
+last-beat = “75”</p>
+</div></blockquote>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupBendSound.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=bend-sound)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupBendSound.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupBezier">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupBezier</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupBezier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupBezier" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<blockquote>
+<div><p>The bezier attribute group is used to indicate the curvature of slurs and ties, representing the control points for a cubic bezier curve. For ties, the bezier attribute group is used with the tied element.</p>
+</div></blockquote>
+<p>Normal slurs, S-shaped slurs, and ties need only two bezier points: one associated with the start of the slur or tie, the other with the stop. Complex slurs and slurs divided over system breaks can specify additional bezier data at slur elements with a continue type.</p>
+<p>The bezier-x, bezier-y, and bezier-offset attributes describe the outgoing bezier point for slurs and ties with a start type, and the incoming bezier point for slurs and ties with types of stop or continue. The bezier-x2, bezier-y2, and bezier-offset2 attributes are only valid with slurs of type continue, and describe the outgoing bezier point.</p>
+<p>The bezier-x, bezier-y, bezier-x2, and bezier-y2 attributes are specified in tenths, relative to any position settings associated with the slur or tied element. The bezier-offset and bezier-offset2 attributes are measured in terms of musical divisions, like the offset element.</p>
+<p>The bezier-offset and bezier-offset2 attributes are deprecated as of MusicXML 3.1. If both the bezier-x and bezier-offset attributes are present, the bezier-x attribute takes priority. Similarly, the bezier-x2 attribute takes priority over the bezier-offset2 attribute. The two types of bezier attributes are not additive.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupBezier.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=bezier)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupBezier.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupColor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupColor</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupColor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupColor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The color attribute group indicates the color of an element.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupColor.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=color)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupColor.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupDashedFormatting">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupDashedFormatting</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupDashedFormatting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupDashedFormatting" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The dashed-formatting entity represents the length of dashes and spaces in a dashed line. Both the dash-length and space-length attributes are represented in tenths. These attributes are ignored if the corresponding line-type attribute is not dashed.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupDashedFormatting.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=dashed-formatting)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupDashedFormatting.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupDirective">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupDirective</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupDirective"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupDirective" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The directive attribute changes the default-x position of a direction. It indicates that the left-hand side of the direction is aligned with the left-hand side of the time signature. If no time signature is present, it is aligned with the left-hand side of the first music notational element in the measure. If a default-x, justify, or halign attribute is present, it overrides the directive attribute.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupDirective.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=directive)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupDirective.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupDocumentAttributes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupDocumentAttributes</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupDocumentAttributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupDocumentAttributes" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<blockquote>
+<div><p>The document-attributes attribute group is used to specify the attributes for an entire MusicXML document. Currently this is used for the version attribute.</p>
+</div></blockquote>
+<p>The version attribute was added in Version 1.1 for the score-partwise and score-timewise documents. It provides an easier way to get version information than through the MusicXML public ID. The default value is 1.0 to make it possible for programs that handle later versions to distinguish earlier version files reliably. Programs that write MusicXML 1.1 or later files should set this attribute.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupDocumentAttributes.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=document-attributes)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupDocumentAttributes.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupElementPosition">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupElementPosition</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupElementPosition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupElementPosition" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The element and position attributes are new as of Version 2.0. They allow for bookmarks and links to be positioned at higher resolution than the level of music-data elements. When no element and position attributes are present, the bookmark or link element refers to the next sibling element in the MusicXML file. The element attribute specifies an element type for a descendant of the next sibling element that is not a link or bookmark. The position attribute specifies the position of this descendant element, where the first position is 1. The position attribute is ignored if the element attribute is not present. For instance, an element value of “beam” and a position value of “2” defines the link or bookmark to refer to the second beam descendant of the next sibling element that is not a link or bookmark. This is equivalent to an XPath test of [.//beam[2]] done in the context of the sibling element.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupElementPosition.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=element-position)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupElementPosition.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupEnclosure">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupEnclosure</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupEnclosure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupEnclosure" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The enclosure attribute group is used to specify the formatting of an enclosure around text or symbols.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupEnclosure.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=enclosure)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupEnclosure.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupFont">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupFont</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupFont"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupFont" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The font attribute group gathers together attributes for determining the font within a credit or direction. They are based on the text styles for Cascading Style Sheets. The font-family is a comma-separated list of font names.The font-style can be normal or italic. The font-size can be one of the CSS sizes or a numeric point size. The font-weight can be normal or bold. The default is application-dependent, but is a text font vs. a music font.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupFont.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=font)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupFont.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupGroupNameText">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupGroupNameText</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupGroupNameText"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupGroupNameText" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The group-name-text attribute group is used by the group-name and group-abbreviation elements. The print-style and justify attribute groups are deprecated in MusicXML 2.0 in favor of the new group-name-display and group-abbreviation-display elements.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupGroupNameText.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=group-name-text)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupGroupNameText.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupHalign">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupHalign</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupHalign"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupHalign" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<blockquote>
+<div><p>In cases where text extends over more than one line, horizontal alignment and justify values can be different. The most typical case is for credits, such as:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Words and music by</dt><dd><p>Pat Songwriter</p>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+<p>Typically this type of credit is aligned to the right, so that the position information refers to the right-most part of the text. But in this example, the text is center-justified, not right-justified.</p>
+<p>The halign attribute is used in these situations. If it is not present, its value is the same as for the justify attribute. For elements where a justify attribute is not allowed, the default is implementation-dependent.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupHalign.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=halign)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupHalign.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupImageAttributes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupImageAttributes</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupImageAttributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupImageAttributes" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The image-attributes group is used to include graphical images in a score. The required source attribute is the URL for the image file. The required type attribute is the MIME type for the image file format. Typical choices include application/postscript, image/gif, image/jpeg, image/png, and image/tiff. The optional height and width attributes are used to size and scale an image. The image should be scaled independently in X and Y if both height and width are specified. If only one attribute is specified, the image should be scaled proportionally to fit in the specified dimension.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupImageAttributes.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=image-attributes)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupImageAttributes.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupJustify">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupJustify</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupJustify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupJustify" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The justify attribute is used to indicate left, center, or right justification. The default value varies for different elements. For elements where the justify attribute is present but the halign attribute is not, the justify attribute indicates horizontal alignment as well as justification.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupJustify.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=justify)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupJustify.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupLetterSpacing">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupLetterSpacing</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupLetterSpacing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupLetterSpacing" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The letter-spacing attribute specifies text tracking. Values are either “normal” or a number representing the number of ems to add between each letter. The number may be negative in order to subtract space. The default is normal, which allows flexibility of letter-spacing for purposes of text justification.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupLetterSpacing.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=letter-spacing)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupLetterSpacing.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupLevelDisplay">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupLevelDisplay</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupLevelDisplay"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupLevelDisplay" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The level-display attribute group specifies three common ways to indicate editorial indications: putting parentheses or square brackets around a symbol, or making the symbol a different size. If not specified, they are left to application defaults. It is used by the level and accidental elements.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupLevelDisplay.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=level-display)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupLevelDisplay.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupLineHeight">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupLineHeight</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupLineHeight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupLineHeight" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The line-height attribute specifies text leading. Values are either “normal” or a number representing the percentage of the current font height to use for leading. The default is “normal”. The exact normal value is implementation-dependent, but values between 100 and 120 are recommended.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupLineHeight.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=line-height)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupLineHeight.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupLineLength">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupLineLength</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupLineLength"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupLineLength" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The line-length attribute distinguishes between different line lengths for doit, falloff, plop, and scoop articulations.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupLineLength.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=line-length)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupLineLength.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupLineShape">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupLineShape</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupLineShape"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupLineShape" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The line-shape attribute distinguishes between straight and curved lines.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupLineShape.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=line-shape)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupLineShape.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupLineType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupLineType</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupLineType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupLineType" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The line-type attribute distinguishes between solid, dashed, dotted, and wavy lines.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupLineType.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=line-type)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupLineType.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupLinkAttributes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupLinkAttributes</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupLinkAttributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupLinkAttributes" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The link-attributes group includes all the simple XLink attributes supported in the MusicXML format. It is also used to connect a MusicXML score with MusicXML parts or a MusicXML opus.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupLinkAttributes.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=link-attributes)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupLinkAttributes.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupMeasureAttributes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupMeasureAttributes</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupMeasureAttributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupMeasureAttributes" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<blockquote>
+<div><p>The measure-attributes group is used by the measure element. Measures have a required number attribute (going from partwise to timewise, measures are grouped via the number).</p>
+</div></blockquote>
+<p>The implicit attribute is set to “yes” for measures where the measure number should never appear, such as pickup measures and the last half of mid-measure repeats. The value is “no” if not specified.</p>
+<p>The non-controlling attribute is intended for use in multimetric music like the Don Giovanni minuet. If set to “yes”, the left barline in this measure does not coincide with the left barline of measures in other parts. The value is “no” if not specified.</p>
+<p>In partwise files, the number attribute should be the same for measures in different parts that share the same left barline. While the number attribute is often numeric, it does not have to be. Non-numeric values are typically used together with the implicit or non-controlling attributes being set to “yes”. For a pickup measure, the number attribute is typically set to “0” and the implicit attribute is typically set to “yes”.</p>
+<p>If measure numbers are not unique within a part, this can cause problems for conversions between partwise and timewise formats. The text attribute allows specification of displayed measure numbers that are different than what is used in the number attribute. This attribute is ignored for measures where the implicit attribute is set to “yes”. Further details about measure numbering can be specified using the measure-numbering element.</p>
+<p>Measure width is specified in tenths. These are the global tenths specified in the scaling element, not local tenths as modified by the staff-size element.     The width covers the entire measure from barline or system start to barline or system end.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupMeasureAttributes.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=measure-attributes)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupMeasureAttributes.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupOptionalUniqueId">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupOptionalUniqueId</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupOptionalUniqueId"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupOptionalUniqueId" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The optional-unique-id attribute group allows an element to optionally specify an ID that is unique to the entire document. This attribute group is not used for a required id attribute, or for an id attribute that specifies an id reference.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupOptionalUniqueId.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=optional-unique-id)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupOptionalUniqueId.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupOrientation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupOrientation</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupOrientation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupOrientation" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The orientation attribute indicates whether slurs and ties are overhand (tips down) or underhand (tips up). This is distinct from the placement attribute used by any notation type.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupOrientation.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=orientation)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupOrientation.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupPartAttributes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupPartAttributes</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupPartAttributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupPartAttributes" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>In either partwise or timewise format, the part element has an id attribute that is an IDREF back to a score-part in the part-list.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupPartAttributes.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=part-attributes)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupPartAttributes.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupPartNameText">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupPartNameText</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupPartNameText"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupPartNameText" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The part-name-text attribute group is used by the part-name and part-abbreviation elements. The print-style and justify attribute groups are deprecated in MusicXML 2.0 in favor of the new part-name-display and part-abbreviation-display elements.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupPartNameText.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=part-name-text)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupPartNameText.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupPlacement">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupPlacement</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupPlacement"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupPlacement" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The placement attribute indicates whether something is above or below another element, such as a note or a notation.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupPlacement.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=placement)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupPlacement.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupPosition">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupPosition</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupPosition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupPosition" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<blockquote>
+<div><p>For most elements, any program will compute a default x and y position. The position attributes let this be changed two ways.</p>
+</div></blockquote>
+<p>The default-x and default-y attributes change the computation of the default position. For most elements, the origin is changed relative to the left-hand side of the note or the musical position within the bar (x) and the top line of the staff (y).</p>
+<p>For the following elements, the default-x value changes the origin relative to the start of the current measure:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>note</p></li>
+<li><p>figured-bass</p></li>
+<li><p>harmony</p></li>
+<li><p>link</p></li>
+<li><p>directive</p></li>
+<li><p>measure-numbering</p></li>
+<li><p>all descendants of the part-list element</p></li>
+<li><p>all children of the direction-type element</p></li>
+</ul>
+</div></blockquote>
+<p>This origin is from the start of the entire measure, at either the left barline or the start of the system.</p>
+<p>When the default-x attribute is used within a child element of the part-name-display, part-abbreviation-display, group-name-display, or group-abbreviation-display elements, it changes the origin relative to the start of the first measure on the system. These values are used when the current measure or a succeeding measure starts a new system. The same change of origin is used for the group-symbol element.</p>
+<p>For the note, figured-bass, and harmony elements, the default-x value is considered to have adjusted the musical position within the bar for its descendant elements.</p>
+<p>Since the credit-words and credit-image elements are not related to a measure, in these cases the default-x and default-y attributes adjust the origin relative to the bottom left-hand corner of the specified page.</p>
+<p>The relative-x and relative-y attributes change the position relative to the default position, either as computed by the individual program, or as overridden by the default-x and default-y attributes.</p>
+<p>Positive x is right, negative x is left; positive y is up, negative y is down. All units are in tenths of interline space. For stems, positive relative-y lengthens a stem while negative relative-y shortens it.</p>
+<p>The default-x and default-y position attributes provide higher-resolution positioning data than related features such as the placement attribute and the offset element. Applications reading a MusicXML file that can understand both features should generally rely on the default-x and default-y attributes for their greater accuracy. For the relative-x and relative-y attributes, the offset element, placement attribute, and directive attribute provide context for the relative position information, so the two features should be interpreted together.</p>
+<p>As elsewhere in the MusicXML format, tenths are the global tenths defined by the scaling element, not the local tenths of a staff resized by the staff-size element.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupPosition.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=position)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupPosition.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupPrintAttributes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupPrintAttributes</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupPrintAttributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupPrintAttributes" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<blockquote>
+<div><p>The print-attributes group is used by the print element. The new-system and new-page attributes indicate whether to force a system or page break, or to force the current music onto the same system or page as the preceding music. Normally this is the first music data within a measure. If used in multi-part music, they should be placed in the same positions within each part, or the results are undefined. The page-number attribute sets the number of a new page; it is ignored if new-page is not “yes”. Version 2.0 adds a blank-page attribute. This is a positive integer value that specifies the number of blank pages to insert before the current measure. It is ignored if new-page is not “yes”. These blank pages have no music, but may have text or images specified by the credit element. This is used to allow a combination of pages that are all text, or all text and images, together with pages of music.</p>
+</div></blockquote>
+<p>The staff-spacing attribute specifies spacing between multiple staves in tenths of staff space. This is deprecated as of Version 1.1; the staff-layout element should be used instead. If both are present, the staff-layout values take priority.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupPrintAttributes.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=print-attributes)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupPrintAttributes.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupPrintObject">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupPrintObject</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupPrintObject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupPrintObject" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The print-object attribute specifies whether or not to print an object (e.g. a note or a rest). It is yes by default.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupPrintObject.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=print-object)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupPrintObject.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupPrintSpacing">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupPrintSpacing</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupPrintSpacing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupPrintSpacing" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The print-spacing attribute controls whether or not spacing is left for an invisible note or object. It is used only if no note, dot, or lyric is being printed. The value is yes (leave spacing) by default.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupPrintSpacing.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=print-spacing)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupPrintSpacing.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupPrintStyle">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupPrintStyle</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupPrintStyle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupPrintStyle" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The print-style attribute group collects the most popular combination of printing attributes: position, font, and color.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupPrintStyle.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=print-style)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupPrintStyle.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupPrintStyleAlign">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupPrintStyleAlign</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupPrintStyleAlign"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupPrintStyleAlign" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The print-style-align attribute group adds the halign and valign attributes to the position, font, and color attributes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupPrintStyleAlign.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=print-style-align)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupPrintStyleAlign.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupPrintout">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupPrintout</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupPrintout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupPrintout" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<blockquote>
+<div><p>The printout attribute group collects the different controls over printing an object (e.g. a note or rest) and its parts, including augmentation dots and lyrics. This is especially useful for notes that overlap in different voices, or for chord sheets that contain lyrics and chords but no melody.</p>
+</div></blockquote>
+<p>By default, all these attributes are set to yes. If print-object is set to no, the print-dot and print-lyric attributes are interpreted to also be set to no if they are not present.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupPrintout.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=printout)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupPrintout.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupSmufl">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupSmufl</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupSmufl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupSmufl" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The smufl attribute group is used to indicate a particular Standard Music Font Layout (SMuFL) character. Sometimes this is a formatting choice, and sometimes this is a refinement of the semantic meaning of an element.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupSmufl.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=smufl)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupSmufl.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupSymbolFormatting">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupSymbolFormatting</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupSymbolFormatting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupSymbolFormatting" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The symbol-formatting attribute group collects the common formatting attributes for musical symbols. Default values may differ across the elements that use this group.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupSymbolFormatting.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=symbol-formatting)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupSymbolFormatting.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupSystemRelation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupSystemRelation</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupSystemRelation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupSystemRelation" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The system-relation attribute group distinguishes elements that are associated with a system rather than the particular part where the element appears.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupSystemRelation.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=system-relation)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupSystemRelation.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupTextDecoration">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupTextDecoration</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupTextDecoration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupTextDecoration" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The text-decoration attribute group is based on the similar feature in XHTML and CSS. It allows for text to be underlined, overlined, or struck-through. It extends the CSS version by allow double or triple lines instead of just being on or off.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupTextDecoration.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=text-decoration)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupTextDecoration.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupTextDirection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupTextDirection</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupTextDirection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupTextDirection" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The text-direction attribute is used to adjust and override the Unicode bidirectional text algorithm, similar to the Directionality data category in the W3C Internationalization Tag Set recommendation.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupTextDirection.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=text-direction)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupTextDirection.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupTextFormatting">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupTextFormatting</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupTextFormatting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupTextFormatting" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The text-formatting attribute group collects the common formatting attributes for text elements. Default values may differ across the elements that use this group.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupTextFormatting.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=text-formatting)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupTextFormatting.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupTextRotation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupTextRotation</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupTextRotation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupTextRotation" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The rotation attribute is used to rotate text around the alignment point specified by the halign and valign attributes. Positive values are clockwise rotations, while negative values are counter-clockwise rotations.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupTextRotation.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=text-rotation)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupTextRotation.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupTrillSound">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupTrillSound</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupTrillSound"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupTrillSound" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<blockquote>
+<div><p>The trill-sound attribute group includes attributes used to guide the sound of trills, mordents, turns, shakes, and wavy lines. The default choices are:</p>
+<blockquote>
+<div><p>start-note = “upper”
+trill-step = “whole”
+two-note-turn = “none”
+accelerate = “no”
+beats = “4”.</p>
+</div></blockquote>
+</div></blockquote>
+<p>Second-beat and last-beat are percentages for landing on the indicated beat, with defaults of 25 and 75 respectively.</p>
+<p>For mordent and inverted-mordent elements, the defaults are different:</p>
+<blockquote>
+<div><p>The default start-note is “main”, not “upper”.
+The default for beats is “3”, not “4”.
+The default for second-beat is “12”, not “25”.
+The default for last-beat is “24”, not “75”.</p>
+</div></blockquote>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupTrillSound.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=trill-sound)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupTrillSound.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupValign">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupValign</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupValign"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupValign" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The valign attribute is used to indicate vertical alignment to the top, middle, bottom, or baseline of the text. Defaults are implementation-dependent.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupValign.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=valign)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupValign.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupValignImage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupValignImage</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupValignImage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupValignImage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The valign-image attribute is used to indicate vertical alignment for images and graphics, so it removes the baseline value. Defaults are implementation-dependent.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupValignImage.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=valign-image)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupValignImage.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupXPosition">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupXPosition</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupXPosition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupXPosition" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The x-position attribute group is used for elements like notes where specifying x position is common, but specifying y position is rare.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupXPosition.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=x-position)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupXPosition.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupYPosition">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">musicxml.xsd.xsdattribute.</span></span><span class="sig-name descname"><span class="pre">XSDAttributeGroupYPosition</span></span><a class="reference internal" href="../_modules/musicxml/xsd/xsdattribute.html#XSDAttributeGroupYPosition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupYPosition" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#musicxml.xsd.xsdattribute.XSDAttributeGroup" title="musicxml.xsd.xsdattribute.XSDAttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">musicxml.xsd.xsdattribute.XSDAttributeGroup</span></code></a></p>
+<p>The y-position attribute group is used for elements like stems where specifying y position is common, but specifying x position is rare.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="musicxml.xsd.xsdattribute.XSDAttributeGroupYPosition.XSD_TREE">
+<span class="sig-name descname"><span class="pre">XSD_TREE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="musicxml.xsd.xsdtree.html#musicxml.xsd.xsdtree.XSDTree" title="musicxml.xsd.xsdtree.XSDTree"><span class="pre">musicxml.xsd.xsdtree.XSDTree</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">XSDTree(tag=attributeGroup,</span> <span class="pre">name=y-position)</span></em><a class="headerlink" href="#musicxml.xsd.xsdattribute.XSDAttributeGroupYPosition.XSD_TREE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="musicxml.xsd.html" class="btn btn-neutral float-left" title="musicxml.xsd" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="musicxml.xsd.xsdcomplextype.html" class="btn btn-neutral float-right" title="musicxml.xsd.xsdcomplextype" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Alex Gorji.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

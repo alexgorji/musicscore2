@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>musicxml.xsd.xsdindicator &mdash; musicscore2 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> musicscore2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../musicxml/musicxml.html">musicxml</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tree/tree.html">tree</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">musicscore2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>musicxml.xsd.xsdindicator</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for musicxml.xsd.xsdindicator</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">musicxml.util.core</span> <span class="kn">import</span> <span class="n">cap_first</span><span class="p">,</span> <span class="n">convert_to_xml_class_name</span>
+<span class="kn">from</span> <span class="nn">musicxml.xsd.xsdtree</span> <span class="kn">import</span> <span class="n">XSDTree</span><span class="p">,</span> <span class="n">XSDTreeElement</span>
+<span class="kn">import</span> <span class="nn">xml.etree.ElementTree</span> <span class="k">as</span> <span class="nn">ET</span>
+
+
+<div class="viewcode-block" id="XSDSequence"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDSequence">[docs]</a><span class="k">class</span> <span class="nc">XSDSequence</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xsd_tree</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_xsd_tree</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xsd_tree</span> <span class="o">=</span> <span class="n">xsd_tree</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">elements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">xsd_tree</span><span class="o">.</span><span class="n">get_children</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;element&#39;</span><span class="p">:</span>
+                    <span class="n">element</span> <span class="o">=</span> <span class="n">convert_to_xml_class_name</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                    <span class="n">min_occurrence</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">get_attributes</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;minOccurs&#39;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">min_occurrence</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">min_occurrence</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+                    <span class="n">max_occurrence</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">get_attributes</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;maxOccurs&#39;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">max_occurrence</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">max_occurrence</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">element</span><span class="p">,</span> <span class="n">min_occurrence</span><span class="p">,</span> <span class="n">max_occurrence</span><span class="p">))</span>
+
+                <span class="k">elif</span> <span class="n">child</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;group&#39;</span><span class="p">:</span>
+                    <span class="n">xsd_group_name</span> <span class="o">=</span> <span class="s1">&#39;XSDGroup&#39;</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">cap_first</span><span class="p">(</span><span class="n">partial</span><span class="p">)</span> <span class="k">for</span> <span class="n">partial</span> <span class="ow">in</span> <span class="n">child</span><span class="o">.</span><span class="n">get_attributes</span><span class="p">()[</span><span class="s1">&#39;ref&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)])</span>
+                    <span class="n">elements</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">xsd_group_name</span><span class="p">)()</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">elements</span>
+                    <span class="n">min_occurrence</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">get_attributes</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;minOccurs&#39;</span><span class="p">)</span>
+                    <span class="n">max_occurrence</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">get_attributes</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;maxOccurs&#39;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">min_occurrence</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">elements</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                            <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+                        <span class="n">list_el</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                        <span class="n">list_el</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_occurrence</span>
+                        <span class="n">elements</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">list_el</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">max_occurrence</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">elements</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                            <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+                        <span class="n">list_el</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                        <span class="n">list_el</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">max_occurrence</span>
+                        <span class="n">elements</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">list_el</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">elements</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elements</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">xsd_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_xsd_tree</span>
+
+    <span class="nd">@xsd_tree</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">xsd_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">XSDTree</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span>
+        <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">tag</span> <span class="o">!=</span> <span class="s1">&#39;sequence&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_xsd_tree</span> <span class="o">=</span> <span class="n">value</span></div>
+
+
+<div class="viewcode-block" id="XSDChoice"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDChoice">[docs]</a><span class="k">class</span> <span class="nc">XSDChoice</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xsd_tree</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_xsd_tree</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xsd_tree</span> <span class="o">=</span> <span class="n">xsd_tree</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">xsd_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_xsd_tree</span>
+
+    <span class="nd">@xsd_tree</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">xsd_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">XSDTree</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span>
+        <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">tag</span> <span class="o">!=</span> <span class="s1">&#39;choice&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_xsd_tree</span> <span class="o">=</span> <span class="n">value</span></div>
+
+
+<div class="viewcode-block" id="XSDGroup"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroup">[docs]</a><span class="k">class</span> <span class="nc">XSDGroup</span><span class="p">(</span><span class="n">XSDTreeElement</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sequence</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">XSD_TREE</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sequence</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">XSD_TREE</span><span class="o">.</span><span class="n">get_children</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;sequence&#39;</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_sequence</span> <span class="o">=</span> <span class="n">XSDSequence</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sequence</span></div>
+
+
+<span class="c1"># -----------------------------------------------------</span>
+<span class="c1"># AUTOMATICALLY GENERATED WITH generate_indicators.py</span>
+<span class="c1"># -----------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="XSDGroupEditorial"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupEditorial">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupEditorial</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The editorial group specifies editorial information for a musical element.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;editorial&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;The editorial group specifies editorial information for a musical element.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:group ref=&quot;footnote&quot; minOccurs=&quot;0&quot; /&gt;</span>
+<span class="s2">        &lt;xs:group ref=&quot;level&quot; minOccurs=&quot;0&quot; /&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupEditorialVoice"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupEditorialVoice">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupEditorialVoice</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The editorial-voice group supports the common combination of editorial and voice information for a musical element.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;editorial-voice&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;The editorial-voice group supports the common combination of editorial and voice information for a musical element.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:group ref=&quot;footnote&quot; minOccurs=&quot;0&quot; /&gt;</span>
+<span class="s2">        &lt;xs:group ref=&quot;level&quot; minOccurs=&quot;0&quot; /&gt;</span>
+<span class="s2">        &lt;xs:group ref=&quot;voice&quot; minOccurs=&quot;0&quot; /&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupEditorialVoiceDirection"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupEditorialVoiceDirection">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupEditorialVoiceDirection</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The editorial-voice-direction group supports the common combination of editorial and voice information for a direction element. It is separate from the editorial-voice element because extensions and restrictions might be different for directions than for the note and forward elements.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;editorial-voice-direction&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;The editorial-voice-direction group supports the common combination of editorial and voice information for a direction element. It is separate from the editorial-voice element because extensions and restrictions might be different for directions than for the note and forward elements.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:group ref=&quot;footnote&quot; minOccurs=&quot;0&quot; /&gt;</span>
+<span class="s2">        &lt;xs:group ref=&quot;level&quot; minOccurs=&quot;0&quot; /&gt;</span>
+<span class="s2">        &lt;xs:group ref=&quot;voice&quot; minOccurs=&quot;0&quot; /&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupFootnote"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupFootnote">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupFootnote</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The footnote element specifies editorial information that appears in footnotes in the printed score. It is defined within a group due to its multiple uses within the MusicXML schema.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;footnote&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;The footnote element specifies editorial information that appears in footnotes in the printed score. It is defined within a group due to its multiple uses within the MusicXML schema.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;footnote&quot; type=&quot;formatted-text&quot; /&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupLevel"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupLevel">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupLevel</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The level element specifies editorial information for different MusicXML elements. It is defined within a group due to its multiple uses within the MusicXML schema.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;level&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;The level element specifies editorial information for different MusicXML elements. It is defined within a group due to its multiple uses within the MusicXML schema.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;level&quot; type=&quot;level&quot; /&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupStaff"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupStaff">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupStaff</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The staff element is defined within a group due to its use by both notes and direction elements.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;staff&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;The staff element is defined within a group due to its use by both notes and direction elements.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;staff&quot; type=&quot;xs:positiveInteger&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;Staff assignment is only needed for music notated on multiple staves. Used by both notes and directions. Staff values are numbers, with 1 referring to the top-most staff in a part.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupTuning"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupTuning">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupTuning</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The tuning group contains the sequence of elements common to the staff-tuning and accord elements.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;tuning&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;The tuning group contains the sequence of elements common to the staff-tuning and accord elements.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;tuning-step&quot; type=&quot;step&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;The tuning-step element is represented like the step element, with a different name to reflect its different function in string tuning.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;tuning-alter&quot; type=&quot;semitones&quot; minOccurs=&quot;0&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;The tuning-alter element is represented like the alter element, with a different name to reflect its different function in string tuning.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;tuning-octave&quot; type=&quot;octave&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;The tuning-octave element is represented like the octave element, with a different name to reflect its different function in string tuning.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupVirtualInstrumentData"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupVirtualInstrumentData">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupVirtualInstrumentData</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Virtual instrument data can be part of either the score-instrument element at the start of a part, or an instrument-change element within a part.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;virtual-instrument-data&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;Virtual instrument data can be part of either the score-instrument element at the start of a part, or an instrument-change element within a part.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;instrument-sound&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;The instrument-sound element describes the default timbre of the score-instrument. This description is independent of a particular virtual or MIDI instrument specification and allows playback to be shared more easily between applications and libraries.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">        &lt;xs:choice minOccurs=&quot;0&quot;&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;solo&quot; type=&quot;empty&quot;&gt;</span>
+<span class="s2">                &lt;xs:annotation&gt;</span>
+<span class="s2">                    &lt;xs:documentation&gt;The solo element is present if performance is intended by a solo instrument.&lt;/xs:documentation&gt;</span>
+<span class="s2">                &lt;/xs:annotation&gt;</span>
+<span class="s2">            &lt;/xs:element&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;ensemble&quot; type=&quot;positive-integer-or-empty&quot;&gt;</span>
+<span class="s2">                &lt;xs:annotation&gt;</span>
+<span class="s2">                    &lt;xs:documentation&gt;The ensemble element is present if performance is intended by an ensemble such as an orchestral section. The text of the ensemble element contains the size of the section, or is empty if the ensemble size is not specified.&lt;/xs:documentation&gt;</span>
+<span class="s2">                &lt;/xs:annotation&gt;</span>
+<span class="s2">            &lt;/xs:element&gt;</span>
+<span class="s2">        &lt;/xs:choice&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;virtual-instrument&quot; type=&quot;virtual-instrument&quot; minOccurs=&quot;0&quot; /&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupVoice"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupVoice">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupVoice</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A voice is a sequence of musical events (e.g. notes, chords, rests) that proceeds linearly in time. The voice element is used to distinguish between multiple voices in individual parts. It is defined within a group due to its multiple uses within the MusicXML schema.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;voice&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;A voice is a sequence of musical events (e.g. notes, chords, rests) that proceeds linearly in time. The voice element is used to distinguish between multiple voices in individual parts. It is defined within a group due to its multiple uses within the MusicXML schema.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;voice&quot; type=&quot;xs:string&quot; /&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupClef"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupClef">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupClef</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Clefs are represented by a combination of sign, line, and clef-octave-change elements.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;clef&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;Clefs are represented by a combination of sign, line, and clef-octave-change elements.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;sign&quot; type=&quot;clef-sign&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;The sign element represents the clef symbol.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;line&quot; type=&quot;staff-line-position&quot; minOccurs=&quot;0&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;Line numbers are counted from the bottom of the staff. They are only needed with the G, F, and C signs in order to position a pitch correctly on the staff. Standard values are 2 for the G sign (treble clef), 4 for the F sign (bass clef), and 3 for the C sign (alto clef). Line values can be used to specify positions outside the staff, such as a C clef positioned in the middle of a grand staff.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;clef-octave-change&quot; type=&quot;xs:integer&quot; minOccurs=&quot;0&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;The clef-octave-change element is used for transposing clefs. A treble clef for tenors would have a value of -1.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupNonTraditionalKey"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupNonTraditionalKey">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupNonTraditionalKey</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The non-traditional-key group represents a single alteration within a non-traditional key signature. A sequence of these groups makes up a non-traditional key signature&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;non-traditional-key&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;The non-traditional-key group represents a single alteration within a non-traditional key signature. A sequence of these groups makes up a non-traditional key signature&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;key-step&quot; type=&quot;step&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;Non-traditional key signatures are represented using a list of altered tones. The key-step element indicates the pitch step to be altered, represented using the same names as in the step element.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;key-alter&quot; type=&quot;semitones&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;Non-traditional key signatures are represented using a list of altered tones. The key-alter element represents the alteration for a given pitch step, represented with semitones in the same manner as the alter element.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;key-accidental&quot; type=&quot;key-accidental&quot; minOccurs=&quot;0&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;Non-traditional key signatures are represented using a list of altered tones. The key-accidental element indicates the accidental to be displayed in the key signature, represented in the same manner as the accidental element. It is used for disambiguating microtonal accidentals.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupSlash"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupSlash">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupSlash</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The slash group combines elements used for more complete specification of the slash and beat-repeat measure-style elements. They have the same values as the type and dot elements, and define what the beat is for the display of repetition marks. If not present, the beat is based on the current time signature.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;slash&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;The slash group combines elements used for more complete specification of the slash and beat-repeat measure-style elements. They have the same values as the type and dot elements, and define what the beat is for the display of repetition marks. If not present, the beat is based on the current time signature.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:sequence minOccurs=&quot;0&quot;&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;slash-type&quot; type=&quot;note-type-value&quot;&gt;</span>
+<span class="s2">                &lt;xs:annotation&gt;</span>
+<span class="s2">                    &lt;xs:documentation&gt;The slash-type element indicates the graphical note type to use for the display of repetition marks.&lt;/xs:documentation&gt;</span>
+<span class="s2">                &lt;/xs:annotation&gt;</span>
+<span class="s2">            &lt;/xs:element&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;slash-dot&quot; type=&quot;empty&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;</span>
+<span class="s2">                &lt;xs:annotation&gt;</span>
+<span class="s2">                    &lt;xs:documentation&gt;The slash-dot element is used to specify any augmentation dots in the note type used to display repetition marks.&lt;/xs:documentation&gt;</span>
+<span class="s2">                &lt;/xs:annotation&gt;</span>
+<span class="s2">            &lt;/xs:element&gt;</span>
+<span class="s2">        &lt;/xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;except-voice&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;The except-voice element is used to specify a combination of slash notation and regular notation. Any note elements that are in voices specified by the except-voice elements are displayed in normal notation, in addition to the slash notation that is always displayed.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupTimeSignature"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupTimeSignature">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupTimeSignature</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Time signatures are represented by the beats element for the numerator and the beat-type element for the denominator.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;time-signature&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;Time signatures are represented by the beats element for the numerator and the beat-type element for the denominator.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;beats&quot; type=&quot;xs:string&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;The beats element indicates the number of beats, as found in the numerator of a time signature.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;beat-type&quot; type=&quot;xs:string&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;The beat-type element indicates the beat unit, as found in the denominator of a time signature.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupTraditionalKey"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupTraditionalKey">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupTraditionalKey</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The traditional-key group represents a traditional key signature using the cycle of fifths.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;traditional-key&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;The traditional-key group represents a traditional key signature using the cycle of fifths.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;cancel&quot; type=&quot;cancel&quot; minOccurs=&quot;0&quot; /&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;fifths&quot; type=&quot;fifths&quot; /&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;mode&quot; type=&quot;mode&quot; minOccurs=&quot;0&quot; /&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupTranspose"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupTranspose">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupTranspose</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The transpose group represents what must be added to a written pitch to get a correct sounding pitch.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;transpose&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;The transpose group represents what must be added to a written pitch to get a correct sounding pitch.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;diatonic&quot; type=&quot;xs:integer&quot; minOccurs=&quot;0&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;The diatonic element specifies the number of pitch steps needed to go from written to sounding pitch. This allows for correct spelling of enharmonic transpositions. This value does not include octave-change values; the values for both elements need to be added to the written pitch to get the correct sounding pitch.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;chromatic&quot; type=&quot;semitones&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;The chromatic element represents the number of semitones needed to get from written to sounding pitch. This value does not include octave-change values; the values for both elements need to be added to the written pitch to get the correct sounding pitch.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;octave-change&quot; type=&quot;xs:integer&quot; minOccurs=&quot;0&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;The octave-change element indicates how many octaves to add to get from written pitch to sounding pitch. The octave-change element should be included when using transposition intervals of an octave or more, and should not be present for intervals of less than an octave.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;double&quot; type=&quot;double&quot; minOccurs=&quot;0&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;If the double element is present, it indicates that the music is doubled one octave from what is currently written.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupBeatUnit"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupBeatUnit">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupBeatUnit</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The beat-unit group combines elements used repeatedly in the metronome element to specify a note within a metronome mark.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;beat-unit&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;The beat-unit group combines elements used repeatedly in the metronome element to specify a note within a metronome mark.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;beat-unit&quot; type=&quot;note-type-value&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;The beat-unit element indicates the graphical note type to use in a metronome mark.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;beat-unit-dot&quot; type=&quot;empty&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;The beat-unit-dot element is used to specify any augmentation dots for a metronome mark note.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupHarmonyChord"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupHarmonyChord">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupHarmonyChord</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A harmony element can contain many stacked chords (e.g. V of II). A sequence of harmony-chord groups is used for this type of secondary function, where V of II would be represented by a harmony-chord with a 5 numeral followed by a harmony-chord with a 2 numeral.</span>
+
+<span class="sd">A root is a pitch name like C, D, E, while a numeral is a scale degree like 1, 2, 3. The root element is generally used with pop chord symbols, while the numeral element is generally used with classical functional harmony and Nashville numbers. It is an either/or choice to avoid data inconsistency. The function element, which represents Roman numerals with roman numeral text, has been deprecated as of MusicXML 4.0.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;harmony-chord&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;A harmony element can contain many stacked chords (e.g. V of II). A sequence of harmony-chord groups is used for this type of secondary function, where V of II would be represented by a harmony-chord with a 5 numeral followed by a harmony-chord with a 2 numeral.</span>
+
+<span class="s2">A root is a pitch name like C, D, E, while a numeral is a scale degree like 1, 2, 3. The root element is generally used with pop chord symbols, while the numeral element is generally used with classical functional harmony and Nashville numbers. It is an either/or choice to avoid data inconsistency. The function element, which represents Roman numerals with roman numeral text, has been deprecated as of MusicXML 4.0.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:choice&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;root&quot; type=&quot;root&quot; /&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;numeral&quot; type=&quot;numeral&quot; /&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;function&quot; type=&quot;style-text&quot;&gt;</span>
+<span class="s2">                &lt;xs:annotation&gt;</span>
+<span class="s2">                    &lt;xs:documentation&gt;The function element represents classical functional harmony with an indication like I, II, III rather than C, D, E. It represents the Roman numeral part of a functional harmony rather than the complete function itself. It has been deprecated as of MusicXML 4.0 in favor of the numeral element.&lt;/xs:documentation&gt;</span>
+<span class="s2">                &lt;/xs:annotation&gt;</span>
+<span class="s2">            &lt;/xs:element&gt;</span>
+<span class="s2">        &lt;/xs:choice&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;kind&quot; type=&quot;kind&quot; /&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;inversion&quot; type=&quot;inversion&quot; minOccurs=&quot;0&quot; /&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;bass&quot; type=&quot;bass&quot; minOccurs=&quot;0&quot; /&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;degree&quot; type=&quot;degree&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot; /&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupAllMargins"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupAllMargins">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupAllMargins</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The all-margins group specifies both horizontal and vertical margins in tenths.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;all-margins&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;The all-margins group specifies both horizontal and vertical margins in tenths.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:group ref=&quot;left-right-margins&quot; /&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;top-margin&quot; type=&quot;tenths&quot; /&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;bottom-margin&quot; type=&quot;tenths&quot; /&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupLayout"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupLayout">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupLayout</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The layout group specifies the sequence of page, system, and staff layout elements that is common to both the defaults and print elements.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;layout&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;The layout group specifies the sequence of page, system, and staff layout elements that is common to both the defaults and print elements.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;page-layout&quot; type=&quot;page-layout&quot; minOccurs=&quot;0&quot; /&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;system-layout&quot; type=&quot;system-layout&quot; minOccurs=&quot;0&quot; /&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;staff-layout&quot; type=&quot;staff-layout&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot; /&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupLeftRightMargins"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupLeftRightMargins">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupLeftRightMargins</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The left-right-margins group specifies horizontal margins in tenths.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;left-right-margins&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;The left-right-margins group specifies horizontal margins in tenths.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;left-margin&quot; type=&quot;tenths&quot; /&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;right-margin&quot; type=&quot;tenths&quot; /&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupDuration"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupDuration">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupDuration</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The duration element is defined within a group due to its uses within the note, figured-bass, backup, and forward elements.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;duration&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;The duration element is defined within a group due to its uses within the note, figured-bass, backup, and forward elements.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;duration&quot; type=&quot;positive-divisions&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;Duration is a positive number specified in division units. This is the intended duration vs. notated duration (for instance, differences in dotted notes in Baroque-era music). Differences in duration specific to an interpretation or performance should be represented using the note element&#39;s attack and release attributes.</span>
+
+<span class="s2">The duration element moves the musical position when used in backup elements, forward elements, and note elements that do not contain a chord child element.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupDisplayStepOctave"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupDisplayStepOctave">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupDisplayStepOctave</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The display-step-octave group contains the sequence of elements used by both the rest and unpitched elements. This group is used to place rests and unpitched elements on the staff without implying that these elements have pitch. Positioning follows the current clef. If percussion clef is used, the display-step and display-octave elements are interpreted as if in treble clef, with a G in octave 4 on line 2.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;display-step-octave&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;The display-step-octave group contains the sequence of elements used by both the rest and unpitched elements. This group is used to place rests and unpitched elements on the staff without implying that these elements have pitch. Positioning follows the current clef. If percussion clef is used, the display-step and display-octave elements are interpreted as if in treble clef, with a G in octave 4 on line 2.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;display-step&quot; type=&quot;step&quot; /&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;display-octave&quot; type=&quot;octave&quot; /&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupFullNote"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupFullNote">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupFullNote</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The full-note group is a sequence of the common note elements between cue/grace notes and regular (full) notes: pitch, chord, and rest information, but not duration (cue and grace notes do not have duration encoded). Unpitched elements are used for unpitched percussion, speaking voice, and other musical elements lacking determinate pitch.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;full-note&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;The full-note group is a sequence of the common note elements between cue/grace notes and regular (full) notes: pitch, chord, and rest information, but not duration (cue and grace notes do not have duration encoded). Unpitched elements are used for unpitched percussion, speaking voice, and other musical elements lacking determinate pitch.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;chord&quot; type=&quot;empty&quot; minOccurs=&quot;0&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;The chord element indicates that this note is an additional chord tone with the preceding note.</span>
+
+<span class="s2">The duration of a chord note does not move the musical position within a measure. That is done by the duration of the first preceding note without a chord element. Thus the duration of a chord note cannot be longer than the preceding note.</span>
+<span class="s2">							</span>
+<span class="s2">In most cases the duration will be the same as the preceding note. However it can be shorter in situations such as multiple stops for string instruments.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">        &lt;xs:choice&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;pitch&quot; type=&quot;pitch&quot; /&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;unpitched&quot; type=&quot;unpitched&quot; /&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;rest&quot; type=&quot;rest&quot; /&gt;</span>
+<span class="s2">        &lt;/xs:choice&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupMusicData"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupMusicData">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupMusicData</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The music-data group contains the basic musical data that is either associated with a part or a measure, depending on whether the partwise or timewise hierarchy is used.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;music-data&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;The music-data group contains the basic musical data that is either associated with a part or a measure, depending on whether the partwise or timewise hierarchy is used.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;note&quot; type=&quot;note&quot; /&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;backup&quot; type=&quot;backup&quot; /&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;forward&quot; type=&quot;forward&quot; /&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;direction&quot; type=&quot;direction&quot; /&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;attributes&quot; type=&quot;attributes&quot; /&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;harmony&quot; type=&quot;harmony&quot; /&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;figured-bass&quot; type=&quot;figured-bass&quot; /&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;print&quot; type=&quot;print&quot; /&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;sound&quot; type=&quot;sound&quot; /&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;listening&quot; type=&quot;listening&quot; /&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;barline&quot; type=&quot;barline&quot; /&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;grouping&quot; type=&quot;grouping&quot; /&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;link&quot; type=&quot;link&quot; /&gt;</span>
+<span class="s2">            &lt;xs:element name=&quot;bookmark&quot; type=&quot;bookmark&quot; /&gt;</span>
+<span class="s2">        &lt;/xs:choice&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupPartGroup"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupPartGroup">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupPartGroup</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The part-group element is defined within a group due to its multiple uses within the part-list element.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;part-group&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;The part-group element is defined within a group due to its multiple uses within the part-list element.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;part-group&quot; type=&quot;part-group&quot; /&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupScoreHeader"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupScoreHeader">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupScoreHeader</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The score-header group contains basic score metadata about the work and movement, score-wide defaults for layout and fonts, credits that appear on the first or following pages, and the part list.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;score-header&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;The score-header group contains basic score metadata about the work and movement, score-wide defaults for layout and fonts, credits that appear on the first or following pages, and the part list.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;work&quot; type=&quot;work&quot; minOccurs=&quot;0&quot; /&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;movement-number&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;The movement-number element specifies the number of a movement.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;movement-title&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;The movement-title element specifies the title of a movement, not including its number.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;identification&quot; type=&quot;identification&quot; minOccurs=&quot;0&quot; /&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;defaults&quot; type=&quot;defaults&quot; minOccurs=&quot;0&quot; /&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;credit&quot; type=&quot;credit&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot; /&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;part-list&quot; type=&quot;part-list&quot; /&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="XSDGroupScorePart"><a class="viewcode-back" href="../../../musicxml/musicxml.xsd.xsdindicator.html#musicxml.xsd.xsdindicator.XSDGroupScorePart">[docs]</a><span class="k">class</span> <span class="nc">XSDGroupScorePart</span><span class="p">(</span><span class="n">XSDGroup</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The score-part element is defined within a group due to its multiple uses within the part-list element.&quot;&quot;&quot;</span>
+
+    <span class="n">XSD_TREE</span> <span class="o">=</span> <span class="n">XSDTree</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;xs:group xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; name=&quot;score-part&quot;&gt;</span>
+<span class="s2">    &lt;xs:annotation&gt;</span>
+<span class="s2">        &lt;xs:documentation&gt;The score-part element is defined within a group due to its multiple uses within the part-list element.&lt;/xs:documentation&gt;</span>
+<span class="s2">    &lt;/xs:annotation&gt;</span>
+<span class="s2">    &lt;xs:sequence&gt;</span>
+<span class="s2">        &lt;xs:element name=&quot;score-part&quot; type=&quot;score-part&quot;&gt;</span>
+<span class="s2">            &lt;xs:annotation&gt;</span>
+<span class="s2">                &lt;xs:documentation&gt;Each MusicXML part corresponds to a track in a Standard MIDI Format 1 file. The score-instrument elements are used when there are multiple instruments per track. The midi-device element is used to make a MIDI device or port assignment for the given track. Initial midi-instrument assignments may be made here as well.&lt;/xs:documentation&gt;</span>
+<span class="s2">            &lt;/xs:annotation&gt;</span>
+<span class="s2">        &lt;/xs:element&gt;</span>
+<span class="s2">    &lt;/xs:sequence&gt;</span>
+<span class="s2">&lt;/xs:group&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+                                     <span class="p">))</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;XSDSequence&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDChoice&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroup&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroupEditorial&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroupEditorialVoice&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroupEditorialVoiceDirection&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;XSDGroupFootnote&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroupLevel&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroupStaff&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroupTuning&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroupVirtualInstrumentData&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroupVoice&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;XSDGroupClef&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroupNonTraditionalKey&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroupSlash&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroupTimeSignature&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroupTraditionalKey&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;XSDGroupTranspose&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroupBeatUnit&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroupHarmonyChord&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroupAllMargins&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroupLayout&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;XSDGroupLeftRightMargins&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroupDuration&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroupDisplayStepOctave&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroupFullNote&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroupMusicData&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;XSDGroupPartGroup&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroupScoreHeader&#39;</span><span class="p">,</span> <span class="s1">&#39;XSDGroupScorePart&#39;</span><span class="p">]</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Alex Gorji.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
